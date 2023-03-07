@@ -1,0 +1,382 @@
+.card__body {
+  position: relative;
+  width: $base-unit * 58;
+  margin-left: auto;
+  margin-right: auto;
+  .step {
+    margin-bottom: $base-unit * 9;
+    display: none;
+    &_active {
+      display: block;
+    }
+  }
+  .card__header {
+    .card-title {
+      font-size: 2rem;
+    }
+    p {
+      color: $text-muted;
+      font-weight: 400;
+    }
+  }
+}
+/* Form styles */
+#personal_info {
+  .form-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: $base-unit;
+    label {
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+    input {
+      $error: hsl(355, 100%, 45%);
+      padding: 0.8em 1em;
+      border-radius: 0.5em;
+      border: 1px solid $border-light;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+      color: $text-primary;
+      &::placeholder {
+        color: $text-muted;
+        font-weight: 500;
+      }
+      &.error {
+        border-color: $error;
+        outline: none;
+        & ~ span {
+          /* Error message span */
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      & ~ span {
+        position: absolute;
+        inset: 0 0 auto auto;
+        color: $error;
+        font-size: 0.9rem;
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+/* Plan select styles */
+.plans {
+  display: flex;
+  gap: $base-unit * 2;
+  &__item {
+    cursor: pointer;
+    background: none;
+    border-radius: $base-unit;
+    border: 1px solid $border-light;
+    display: flex;
+    flex-direction: column;
+    gap: $base-unit;
+    justify-content: space-between;
+    text-align: left;
+    height: $base-unit * 20;
+    width: $base-unit * 18;
+    transition: background 0.1s ease-in-out, border 0.1s ease-in-out;
+    &:hover {
+      background: hsl(217 100% 95% / 0.85);
+    }
+    &_selected {
+      background: $bg-primary;
+      border-color: $border-selected;
+    }
+    img {
+      width: $base-unit * 5;
+    }
+    small {
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: $text-muted;
+    }
+    span {
+      display: none;
+    }
+    &_yearly {
+      span {
+        display: block;
+      }
+    }
+  }
+}
+
+.options {
+  background: $bg-primary;
+  border-radius: $base-unit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $base-unit * 2;
+  height: $base-unit * 6;
+  &__option {
+    font-weight: 500;
+    color: $text-muted;
+    transition: color 0.1s ease-in-out, font-weight 0.1s ease-in-out;
+    &_active {
+      color: $text-primary;
+    }
+  }
+  .btn-toggle {
+    $bg: $text-primary;
+    border: none;
+    border-radius: $base-unit * 3;
+    height: $base-unit * 2.5;
+    width: $base-unit * 5;
+    cursor: pointer;
+    background: $bg;
+    &__switch {
+      display: block;
+      border-radius: 50%;
+      background: #fff;
+      width: $base-unit * 1.5;
+      height: $base-unit * 1.5;
+      transition: translate 0.25s ease-in-out;
+    }
+    &_yearly {
+      .btn-toggle__switch {
+        translate: $base-unit * 2.5 0;
+      }
+    }
+  }
+}
+
+/* Add-ons styles */
+.addon {
+  $color-checked: $border-selected;
+  display: flex;
+  gap: $base-unit * 3;
+  align-items: center;
+  border: 1px solid $border-light;
+  border-radius: $base-unit;
+  cursor: pointer;
+  transition: background 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  &_checked {
+    background: $bg-primary;
+    border-color: $border-selected;
+  }
+  &:hover,
+  &:focus {
+    background: hsl(231, 80%, 97%);
+  }
+  &__checkbox {
+    $bg-checked: $border-selected;
+    position: relative;
+    width: 18px;
+    height: 18px;
+    &__default {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 10;
+      &:checked ~ span {
+        background: $bg-checked;
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+    &__custom {
+      position: absolute;
+      inset: 0;
+      border: 1px solid $border-light;
+      border-radius: 0.2em;
+      transition: background 0.1s linear;
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 30% auto auto 45%;
+        width: 3px;
+        height: 7px;
+        border: 0.15em solid transparent;
+        border-bottom-color: $card-bg-primary;
+        border-right-color: $card-bg-primary;
+        border-top-right-radius: 0.085em;
+        border-bottom-right-radius: 0.085em;
+        rotate: 45deg;
+        transform-origin: top right;
+        opacity: 0;
+        transition: opacity 0.1s linear;
+      }
+    }
+  }
+  &__info {
+    flex-grow: 1;
+    h4 {
+      margin-bottom: 0.3em;
+    }
+    small {
+      color: $text-muted;
+      font-size: 0.9em;
+    }
+  }
+  &__price {
+    font-weight: 500;
+    font-size: 0.9em;
+    color: $color-checked;
+  }
+}
+
+/* Summary styles */
+.summary {
+  background: $bg-primary;
+  border-radius: $base-unit;
+  &__arcade {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    &__info {
+      .btn-change {
+        background: none;
+        border: none;
+        text-decoration: underline;
+        font-family: inherit;
+        font-size: 0.95rem;
+        font-weight: 400;
+        color: $text-muted;
+        cursor: pointer;
+        transition: color 0.1s ease-in-out;
+        &:hover {
+          color: hsl(231, 15%, 45%);
+        }
+      }
+    }
+    &__price {
+      font-weight: bold;
+    }
+  }
+  hr {
+    border: none;
+    height: 1px;
+    background: $border-light;
+  }
+  &__addon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    h5 {
+      color: $text-muted;
+      font-weight: 500;
+      font-size: 0.92rem;
+    }
+    &__price {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+  }
+}
+.total {
+  $total-price-color: $border-selected;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  h5 {
+    font-size: 0.92rem;
+    color: $text-muted;
+    font-weight: 500;
+  }
+  &__price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: $total-price-color;
+  }
+}
+/*****/
+
+.card__footer {
+  position: absolute;
+  inset: auto 0 $base-unit * 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  .btn {
+    $bg: $text-primary;
+    $padding: 0.8em 1em;
+    $property: all;
+    $transition: $property 0.1s ease-in-out;
+    cursor: pointer;
+    background: none;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: $base-unit;
+    border: none;
+    &_hide {
+      visibility: hidden;
+      pointer-events: none;
+    }
+    &-back {
+      $property: color;
+      color: $text-muted;
+      font-weight: 500;
+      transition: $transition;
+      &:hover,
+      &:focus {
+        color: hsl(231, 30%, 60%);
+      }
+    }
+    &-next {
+      $property: background;
+      background: hsl(213 96% 18%);
+      color: white;
+      padding: $padding;
+      transition: $transition;
+      &:hover,
+      &:focus {
+        background: hsl(213 85% 25% / 0.9);
+      }
+    }
+    &-submit {
+      display: inline-block;
+      $property: background;
+      background: hsl(243 100% 62%);
+      color: white;
+      padding: $padding;
+      transition: $transition;
+      &:hover,
+      &:focus {
+        background: hsl(243 100% 70% / 0.9);
+      }
+      &.btn_hide {
+        display: none;
+      }
+    }
+  }
+}
+
+/* Final step (thank you) */
+
+.step-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  text-align: center;
+  height: 100%;
+  &_hide {
+    display: none;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    color: $text-muted;
+    line-height: 1.6;
+    font-weight: 400;
+    font-size: 1.02rem;
+  }
+}

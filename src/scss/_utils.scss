@@ -1,0 +1,41 @@
+/* Margin and padding utility classes */
+@for $i from 0 through 5 {
+  $value: $i * $base-unit;
+  @if $i == 0 {
+    $value: $i * $base-unit + 4;
+  }
+  .p-#{$i} {
+    padding: $value;
+  }
+  .py-#{$i} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  .px-#{$i} {
+    padding-left: $value;
+    padding-right: $value;
+  }
+  .m-#{$i} {
+    margin: $value;
+  }
+  .my-#{$i} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+  .mx-#{$i} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  .mt-#{$i} {
+    margin-top: $value;
+  }
+  .mb-#{$i} {
+    margin-bottom: $value;
+  }
+  .ml-#{$i} {
+    margin-left: $value;
+  }
+  .mr-#{$i} {
+    margin-right: $value;
+  }
+}

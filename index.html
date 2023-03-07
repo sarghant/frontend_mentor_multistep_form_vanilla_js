@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="src/index.js"></script>
+    <title>Multistep Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card p-2">
+        <!-- Sidebar -->
+        <div class="sidebar">
+          <div class="sidebar__bg">
+            <img
+              src="src/img/bg-sidebar-desktop.svg"
+              alt="Sidebar Background Image"
+            />
+          </div>
+          <!-- Step list -->
+          <ul>
+            <li class="step step_active" data-list-step="1">
+              <span class="step__index">1</span>
+              <div class="step__title">
+                <h5>Step 1</h5>
+                <p>Your info</p>
+              </div>
+            </li>
+            <li class="step" data-list-step="2">
+              <span class="step__index">2</span>
+              <div class="step__title">
+                <h5>Step 2</h5>
+                <p>Select plan</p>
+              </div>
+            </li>
+            <li class="step" data-list-step="3">
+              <span class="step__index">3</span>
+              <div class="step__title">
+                <h5>Step 3</h5>
+                <p>Add-ons</p>
+              </div>
+            </li>
+            <li class="step" data-list-step="4">
+              <span class="step__index">4</span>
+              <div class="step__title">
+                <h5>Step 4</h5>
+                <p>Summary</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card body -->
+        <div class="card__body mt-5">
+          <form data-steps-form>
+            <!-- ********************* -->
+            <!-- PERSONAL INFO STEP -->
+            <div class="step step_active" id="personal_info" data-step="1">
+              <!-- Card header -->
+              <div class="card__header mb-5">
+                <h2 class="card-title mb-1">Personal info</h2>
+                <p>
+                  Please provide your name, email address, and phone number.
+                </p>
+              </div>
+              <div class="form-group mb-3">
+                <label for="name">Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="e.g. Stephen King"
+                  required
+                />
+                <span></span>
+              </div>
+              <div class="form-group mb-3">
+                <label for="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="e.g. stephenking@lorem.com"
+                  required
+                />
+                <span></span>
+              </div>
+              <div class="form-group mb-3">
+                <label for="phone">Phone Number</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  placeholder="e.g. +1 234 567 890"
+                  pattern="[+]*[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                  required
+                />
+                <span></span>
+              </div>
+            </div>
+
+            <!-- ********************* -->
+            <!-- SELECT PLAN STEP -->
+            <div class="step" data-step="2">
+              <!-- Card header -->
+              <div class="card__header mb-5">
+                <h2 class="card-title mb-1">Select your plan</h2>
+                <p>You have the option of monthly or yearly billing.</p>
+              </div>
+              <div class="plans mb-3">
+                <button class="plans__item py-2 px-2">
+                  <img
+                    src="src/img/icon-arcade.svg"
+                    alt="Arcade monthly plan"
+                  />
+                  <div>
+                    <h4 class="mb-0" data-plan-name="Arcade">Arcade</h4>
+                    <small data-plan-price="9">$9/mo</small>
+                    <span class="mt-0">2 months free</span>
+                  </div>
+                </button>
+                <button class="plans__item py-2 px-2">
+                  <img
+                    src="src/img/icon-advanced.svg"
+                    alt="Advanced monthly plan"
+                  />
+                  <div>
+                    <h4 class="mb-0" data-plan-name="Advanced">Advanced</h4>
+                    <small data-plan-price="12">$12/mo</small>
+                    <span class="mt-0">2 months free</span>
+                  </div>
+                </button>
+                <button class="plans__item py-2 px-2">
+                  <img src="src/img/icon-pro.svg" alt="Pro monthly plan" />
+                  <div>
+                    <h4 class="mb-0" data-plan-name="Pro">Pro</h4>
+                    <small data-plan-price="15">$15/mo</small>
+                    <span class="mt-0">2 months free</span>
+                  </div>
+                </button>
+              </div>
+              <div class="options">
+                <span
+                  class="options__option options__option_active"
+                  data-bill-duration="monthly"
+                  >Monthly</span
+                >
+                <button class="btn-toggle p-0">
+                  <span class="btn-toggle__switch"></span>
+                </button>
+                <span class="options__option" data-bill-duration="yearly"
+                  >Yearly</span
+                >
+              </div>
+            </div>
+            <!-- ********************** -->
+
+            <!-- ********************* -->
+            <!-- ADD-ONS STEP -->
+            <div class="step" data-step="3">
+              <!-- Card header -->
+              <div class="card__header mb-5">
+                <h2 class="card-title mb-1">Pick add-ons</h2>
+                <p>Add-ons help enhance your gaming experience.</p>
+              </div>
+              <label
+                for="online-service-check"
+                class="addon py-2 px-3 mb-2"
+                data-addon="1"
+              >
+                <div class="addon__checkbox">
+                  <input
+                    type="checkbox"
+                    id="online-service-check"
+                    class="addon__checkbox__default"
+                  />
+                  <span class="addon__checkbox__custom"></span>
+                </div>
+                <div class="addon__info">
+                  <h4 data-addon-name="Online service">Online service</h4>
+                  <small>Access to multiplayer games</small>
+                </div>
+                <span class="addon__price" data-addon-price="1">+$1/mo</span>
+              </label>
+              <label
+                for="storage-check"
+                class="addon py-2 px-3 mb-2"
+                data-addon="2"
+              >
+                <div class="addon__checkbox">
+                  <input
+                    type="checkbox"
+                    id="storage-check"
+                    class="addon__checkbox__default"
+                  />
+                  <span class="addon__checkbox__custom"></span>
+                </div>
+                <div class="addon__info">
+                  <h4 data-addon-name="Larger storage">Larger storage</h4>
+                  <small>Extra 1TB of cloud save</small>
+                </div>
+                <span class="addon__price" data-addon-price="2">+$2/mo</span>
+              </label>
+              <label
+                for="custom-profile-check"
+                class="addon py-2 px-3 mb-2"
+                data-addon="3"
+              >
+                <div class="addon__checkbox">
+                  <input
+                    type="checkbox"
+                    id="custom-profile-check"
+                    class="addon__checkbox__default"
+                  />
+                  <span class="addon__checkbox__custom"></span>
+                </div>
+                <div class="addon__info">
+                  <h4 data-addon-name="Customizable profile">
+                    Customizable profile
+                  </h4>
+                  <small>Custom theme on your profile</small>
+                </div>
+                <span class="addon__price" data-addon-price="2">+$2/mo</span>
+              </label>
+            </div>
+            <!-- ********************** -->
+
+            <!-- ********************* -->
+            <!-- FINISHING STEP -->
+            <div class="step" data-step="4">
+              <!-- Card header -->
+              <div class="card__header mb-5">
+                <h2 class="card-title mb-1">Finishing up</h2>
+                <p>Double-check everything looks OK before confirming.</p>
+              </div>
+              <div class="summary py-3 px-4 mb-3">
+                <div class="summary__arcade mb-3">
+                  <div class="summary__arcade__info">
+                    <h4 class="mb-0" data-picked-plan></h4>
+                    <button class="btn-change">Change</button>
+                  </div>
+                  <span
+                    class="summary__arcade__price"
+                    data-picked-plan-price
+                  ></span>
+                </div>
+                <hr class="mb-3" />
+                <div data-summary-addons>
+                  <!-- Will be filled dynamically through javascript (user interactions) -->
+                </div>
+              </div>
+              <div class="total px-4" data-total>
+                <h5><!-- Through JS --></h5>
+                <div class="total__price" data-total-price></div>
+              </div>
+            </div>
+            <!-- ********************** -->
+
+            <div class="card__footer">
+              <button
+                type="button"
+                class="btn btn-back btn_hide"
+                data-btn-back="back"
+              >
+                Go Back
+              </button>
+              <button
+                type="submit"
+                class="btn btn-next"
+                data-btn-next="next"
+                data-btn-submit
+              >
+                Next Step
+              </button>
+            </div>
+          </form>
+          <!-- Ending Thank you -->
+          <div class="step-end step-end_hide" data-step-end>
+            <img
+              src="src/img/icon-thank-you.svg"
+              alt="Thank You"
+              class="mb-3"
+            />
+            <h2 class="mb-1">Thank you!</h2>
+            <p>
+              Thanks for confirming your subscription! We hope you have fun
+              using our platform. If you ever need support, please feel free to
+              email us at support@loremgaing.com.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

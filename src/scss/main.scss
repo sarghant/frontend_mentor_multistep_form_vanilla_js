@@ -1,0 +1,36 @@
+@import "config";
+@import "utils";
+@import "sidebar";
+@import "card-body";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  background: $bg-primary;
+  color: $text-primary;
+  font-family: "Ubuntu", sans-serif;
+  overflow: hidden;
+}
+.container {
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  border-radius: 1rem;
+  background: $card-bg-primary;
+  width: max($base-unit * 100, 48vw);
+  height: $base-unit * 70;
+  display: flex;
+  box-shadow: 2px 10px 15px -2px $card-shadow-color;
+}
+
+/* Media queries */
+@import "media";
